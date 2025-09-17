@@ -1,0 +1,10 @@
+import axios from "axios";
+
+export const API = axios.create({
+  baseURL: "http://localhost:3000/api",
+  withCredentials: true, // allows httpOnly cookies
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
