@@ -13,7 +13,7 @@ connectToDB();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://lead-management-system-2c9i.vercel.app",
     credentials: true,
   })
 );
