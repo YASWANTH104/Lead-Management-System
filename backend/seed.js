@@ -44,7 +44,7 @@ async function seedDatabase() {
   }));
 
   await Lead.insertMany(leads);
-  console.log("Seed complete. Test user: test@erino.io / Test@1234");
+  console.log("Seed complete. Test user: test@erino.io / test@1234");
   process.exit(0);
 }
 
