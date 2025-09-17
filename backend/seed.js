@@ -28,18 +28,18 @@ async function seedDatabase() {
   const statuses = ["new", "contacted", "qualified", "lost", "won"];
 
   const leads = Array.from({ length: 120 }).map(() => ({
-    first_name: faker.person.firstName(), // ✅ changed
-    last_name: faker.person.lastName(), // ✅ changed
+    first_name: faker.person.firstName(), 
+    last_name: faker.person.lastName(), 
     email: faker.internet.email().toLowerCase(),
-    phone: faker.phone.number(), // ✅ changed
-    company: faker.company.name(), // ✅ changed
-    city: faker.location.city(), // ✅ changed
-    state: faker.location.state(), // ✅ changed
-    source: faker.helpers.arrayElement(sources), // ✅ changed
-    status: faker.helpers.arrayElement(statuses), // ✅ changed
-    score: faker.number.int({ min: 0, max: 100 }), // ✅ changed
-    lead_value: faker.number.int({ min: 100, max: 10000 }), // ✅ changed
-    last_activity_at: faker.date.recent({ days: 90 }), // ✅ changed
+    phone: faker.phone.number(),  
+    company: faker.company.name(),  
+    city: faker.location.city(),  
+    state: faker.location.state(),  
+    source: faker.helpers.arrayElement(sources),
+    status: faker.helpers.arrayElement(statuses),
+    score: faker.number.int({ min: 0, max: 100 }), 
+    lead_value: faker.number.int({ min: 100, max: 10000 }), 
+    last_activity_at: faker.date.recent({ days: 90 }),  
     is_qualified: faker.datatype.boolean(),
   }));
 

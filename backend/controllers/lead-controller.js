@@ -3,12 +3,10 @@ const Lead=require("../models/Lead")
 function buildFilters(query) {
   const filters = {};
 
-  // string equals
   if (query.email_eq) filters.email = query.email_eq;
   if (query.company_eq) filters.company = query.company_eq;
   if (query.city_eq) filters.city = query.city_eq;
 
-  // string contains
   if (query.email_contains)
     filters.email = { $regex: query.email_contains, $options: "i" };
   if (query.company_contains)
@@ -16,11 +14,9 @@ function buildFilters(query) {
   if (query.city_contains)
     filters.city = { $regex: query.city_contains, $options: "i" };
 
-  // enums (comma separated allowed)
   if (query.status) filters.status = { $in: query.status.split(",") };
   if (query.source) filters.source = { $in: query.source.split(",") };
 
-  // numeric
   if (query.score_eq) filters.score = Number(query.score_eq);
   if (query.score_gt)
     filters.score = { ...(filters.score || {}), $gt: Number(query.score_gt) };
@@ -42,7 +38,6 @@ function buildFilters(query) {
     filters.lead_value = { $gte: minVal, $lte: maxVal };
   }
 
-  // dates
   if (query.created_after)
     filters.created_at = {
       ...(filters.created_at || {}),
@@ -69,7 +64,6 @@ function buildFilters(query) {
       $lt: new Date(query.last_activity_before),
     };
 
-  // boolean
   if (typeof query.is_qualified !== "undefined")
     filters.is_qualified = query.is_qualified === "true";
 
